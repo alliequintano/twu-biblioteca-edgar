@@ -7,27 +7,16 @@ public class Application {
 
     private PrintStream out;
     private Biblioteca biblioteca;
+    private Menu menu;
 
-    public Application(PrintStream out, Biblioteca biblioteca){
+    public Application(PrintStream out, Biblioteca biblioteca, Menu menu){
         this.out = out;
         this.biblioteca = biblioteca;
+        this.menu = menu;
     }
 
     public void start() {
         out.println("Welcome");
-        int option = createMenu();
-
-        //Menu to instatiate or w/e
-        //Choose an Option:
-        //1. List books by name
-        //2. List books with details
-
-    }
-
-    public int createMenu() {
-        out.println("Menu");
-        out.println("1. List Books");
-
-        return 0;
+        menu.displayMenu();
     }
 }

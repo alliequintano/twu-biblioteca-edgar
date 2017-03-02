@@ -15,16 +15,18 @@ public class ApplicationTest {
 
     private PrintStream out;
     private Biblioteca biblioteca;
+    private Menu menu;
 
     @Before
     public void setUp(){
         out = mock(PrintStream.class);
         biblioteca = mock(Biblioteca.class);
+        menu = mock(Menu.class);
     }
 
     @Test
     public void shouldPrintWelcomeMessageWhenApplicationStarts() {
-        Application app = new Application(out, biblioteca);
+        Application app = new Application(out, biblioteca, menu);
         app.start();
         verify(out).println("Welcome");
     }
@@ -32,10 +34,9 @@ public class ApplicationTest {
 
     @Test
     public void shouldPrintMenuOptionsWhenStarting() {
-        Application app = new Application(out, biblioteca);
-        app.createMenu();
-
-        verify(out).println(contains("List Books"));
+        Application app = new Application(out, biblioteca, menu);
+        app.start();
+        verify(menu).displayMenu();
     }
 
     @Test
