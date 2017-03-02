@@ -1,3 +1,4 @@
+import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,22 +9,20 @@ public class Book {
     private final String title;
     private final String author;
     private final String year;
+    private final PrintStream printStream;
 
-    public Book(String title, String author, String year) {
+    public Book(String title, String author, String year, PrintStream printStream) {
         this.title = title;
         this.author = author;
         this.year = year;
+        this.printStream = printStream;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public Map<String, String> getBookDetails() {
-        Map<String, String> bookDetails = new HashMap<>();
-        bookDetails.put("title", title);
-        bookDetails.put("author", author);
-        bookDetails.put("year", year);
-        return bookDetails;
+    public void printDetails() {
+        printStream.println(title + author + year);
     }
 }

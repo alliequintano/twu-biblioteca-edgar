@@ -1,6 +1,5 @@
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,9 +12,9 @@ public class Biblioteca {
     public Biblioteca(PrintStream out) {
         this.out = out;
         books = new ArrayList<Book>();
-        books.add(new Book("1984", "George Orwell", "1983"));
-        books.add(new Book("Green Eggs and Ham", "Dr. Suess", "1904"));
-        books.add(new Book("Sex at Dawn", "IDK", "1987"));
+        books.add(new Book("1984", "George Orwell", "1983", out));
+        books.add(new Book("Green Eggs and Ham", "Dr. Suess", "1904", out));
+        books.add(new Book("Sex at Dawn", "IDK", "1987", out));
     }
 
     public void start() {
