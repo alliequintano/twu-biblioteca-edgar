@@ -1,3 +1,4 @@
+import java.io.InputStream;
 import java.io.PrintStream;
 
 /**
@@ -7,11 +8,10 @@ public class Menu {
     private PrintStream out;
 
     public Menu(PrintStream out) {
-
         this.out = out;
     }
 
     public void displayMenu() {
-        out.println("List Books");
+        out.println("1. List Books");
     }
 }
