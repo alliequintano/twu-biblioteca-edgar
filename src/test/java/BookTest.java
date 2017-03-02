@@ -47,7 +47,8 @@ public class BookTest {
 
     @Test
     public void shouldPrintFormattedDetails() {
+        book.printDetails();
 
-
+        verify(printStream).println("1984 | George Orwell | 1983");
     }
 }
