@@ -6,5 +6,6 @@ public class Main {
         Biblioteca app = new Biblioteca(System.out);
         app.start();
         app.listBooks();
+        app.listDetails();
     }
 }

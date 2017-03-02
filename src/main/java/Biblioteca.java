@@ -28,5 +28,9 @@ public class Biblioteca {
     }
 
     public void listDetails() {
+        out.println("Title | Author | Year");
+        for(Book book : books) {
+            book.printDetails();
+        }
     }
 }
