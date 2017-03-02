@@ -1,7 +1,9 @@
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -14,35 +16,29 @@ import static org.mockito.Mockito.verify;
  */
 public class BibliotecaTest {
 
-    private PrintStream out = mock(PrintStream.class);
+    private PrintStream out;
 
-    @Test
-    public void shouldPrintWelcomeMessageWhenApplicationStarts() {
-        Biblioteca app = new Biblioteca(out);
-        app.start();
-        verify(out).println("Welcome");
+    @Before
+    public void setUp(){
+        out = mock(PrintStream.class);
     }
+
+
 
     @Test
     public void shouldPrintOutNamesOfBooks() {
-        Biblioteca app = new Biblioteca(out);
-        app.listBooks();
+        ArrayList<Book> books = new ArrayList<Book>();
+        books.add(new Book("1984", "George Orwell", "1983", out));
+        books.add(new Book("Green Eggs and Ham", "Dr. Suess", "1904", out));
+        books.add(new Book("Sex at Dawn", "IDK", "1987", out));
+        Biblioteca biblioteca = new Biblioteca(out, books);
+
+        biblioteca.listBooks();
+
         verify(out).println(contains("1984"));
         verify(out).println(contains("Sex at Dawn"));
         verify(out).println(contains("Green Eggs and Ham"));
     }
 
-    @Test
-    public void shouldPrintMenuOptionsWhenStarting() {
-        Biblioteca app = new Biblioteca(out);
 
-        app.createMenu();
-
-        verify(out).println(contains("List Books"));
-    }
-
-    @Test
-    public void shouldCallListBooksWhenSelectingListOptionInMenu() {
-
-    }
 }
