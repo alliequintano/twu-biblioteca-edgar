@@ -22,8 +22,9 @@ public class Biblioteca {
     }
 
     public void listBooks() {
+        out.println("Titles");
         for(Book book : books) {
-            out.println(book.getTitle());
+            book.printTitle();
         }
     }
 

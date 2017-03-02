@@ -1,6 +1,4 @@
 import java.io.PrintStream;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by egonzale on 3/1/17.
@@ -18,8 +16,8 @@ public class Book {
         this.printStream = printStream;
     }
 
-    public String getTitle() {
-        return title;
+    public void printTitle() {
+        printStream.println(title);
     }
 
     public void printDetails() {
