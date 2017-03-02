@@ -46,4 +46,11 @@ public class ApplicationTest {
         verify(biblioteca).listBooks();
     }
 
+    @Test
+    public void shouldNotifyCustomerWhenMenuSelectionIsInvalid() throws IOException {
+        when(in.readLine()).thenReturn("8");
+        app.start();
+        verify(out).println("Select a valid option!");
+    }
+
 }
