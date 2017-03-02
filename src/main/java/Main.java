@@ -5,7 +5,5 @@ public class Main {
     public static void main(String[] args) {
         Biblioteca app = new Biblioteca(System.out);
         app.start();
-        app.listBooks();
-        app.listDetails();
     }
 }

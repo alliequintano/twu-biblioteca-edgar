@@ -19,6 +19,13 @@ public class Biblioteca {
 
     public void start() {
         out.println("Welcome");
+        int option = createMenu();
+
+        //Menu to instatiate or w/e
+        //Choose an Option:
+        //1. List books by name
+        //2. List books with details
+
     }
 
     public void listBooks() {
@@ -33,5 +40,12 @@ public class Biblioteca {
         for(Book book : books) {
             book.printDetails();
         }
+    }
+
+    public int createMenu() {
+        out.println("Menu");
+        out.println("1. List Books");
+
+        return 0;
     }
 }

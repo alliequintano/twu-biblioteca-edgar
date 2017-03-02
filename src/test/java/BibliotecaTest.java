@@ -31,15 +31,18 @@ public class BibliotecaTest {
         verify(out).println(contains("Sex at Dawn"));
         verify(out).println(contains("Green Eggs and Ham"));
     }
-//
-//    @Test
-//    public void shouldCallBookFormattedOutputWhenListingBooksDetails() {
-//        Biblioteca app = new Biblioteca(out);
-//        Book book = mock(Book.class);
-//
-//        app.listDetails();
-//
-//        verify(book).formattedOutput();
-//    }
 
+    @Test
+    public void shouldPrintMenuOptionsWhenStarting() {
+        Biblioteca app = new Biblioteca(out);
+
+        app.createMenu();
+
+        verify(out).println(contains("List Books"));
+    }
+
+    @Test
+    public void shouldCallListBooksWhenSelectingListOptionInMenu() {
+
+    }
 }
