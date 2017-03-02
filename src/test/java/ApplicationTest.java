@@ -5,9 +5,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by alexandraquintano on 3/2/17.
@@ -50,7 +48,15 @@ public class ApplicationTest {
     public void shouldNotifyCustomerWhenMenuSelectionIsInvalid() throws IOException {
         when(in.readLine()).thenReturn("8");
         app.start();
-        verify(out).println("Select a valid option!");
+        verify(out).println(contains("Select a valid option!"));
+    }
+
+    @Test
+    public void shouldTakeInputAfterInvalidMenuSelection() throws IOException {
+        when(in.readLine()).thenReturn("selection");
+        app.start();
+        when(in.readLine()).thenReturn("1");
+        verify(in, times(2)).readLine();
     }
 
 }

@@ -22,19 +22,28 @@ public class Application {
     public void start() {
         out.println("Welcome");
         menu.displayMenu();
-        processMenuSelection();
+        handleUserInput();
     }
 
-    private void processMenuSelection() {
+    private void handleUserInput() {
+        boolean invalidInput = !isMenuOption();
+        if (invalidInput){
+            invalidInput = !isMenuOption();
+        }
+    }
+
+    private boolean isMenuOption() {
         try {
             String selection = in.readLine();
             if (selection != null && selection.equals("1")) {
                 biblioteca.listBooks();
-            } else {
+            } else if (selection != null) {
                 out.println("Select a valid option!");
+                return false;
             }
         } catch (IOException e) {
 
         }
+        return true;
     }
 }
