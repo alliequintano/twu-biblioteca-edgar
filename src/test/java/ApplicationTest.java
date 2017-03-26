@@ -28,15 +28,16 @@ public class ApplicationTest {
     }
     @Test
     public void shouldPrintWelcomeMessageWhenApplicationStarts() throws IOException {
+        when(in.readLine()).thenReturn("1");
         app.start();
         verify(out).println("Welcome");
     }
     @Test
     public void shouldPrintMenuOptionsWhenStarting() throws IOException {
+        when(in.readLine()).thenReturn("1");
         app.start();
         verify(menu).displayMenu();
     }
-
     @Test
     public void shouldCallListBooksWhenSelectingListOptionInMenu() throws IOException {
         when(in.readLine()).thenReturn("1");
@@ -46,17 +47,16 @@ public class ApplicationTest {
 
     @Test
     public void shouldNotifyCustomerWhenMenuSelectionIsInvalid() throws IOException {
-        when(in.readLine()).thenReturn("8");
+        when(in.readLine()).thenReturn("8").thenReturn("1");
         app.start();
         verify(out).println(contains("Select a valid option!"));
     }
 
-//    @Test
-//    public void shouldTakeInputAfterInvalidMenuSelection() throws IOException {
-//        when(in.readLine()).thenReturn("selection");
-//        app.start();
-//        when(in.readLine()).thenReturn("1");
-//        verify(in, times(2)).readLine();
-//    }
+    @Test
+    public void shouldNotifyInvalidSelectionUntilValidSelectionProvided() throws IOException {
+        when(in.readLine()).thenReturn("invalid").thenReturn("invalid").thenReturn("1");
+        app.start();
+        verify(out, times(2)).println("Select a valid option!");
+    }
 
 }

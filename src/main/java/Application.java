@@ -22,16 +22,22 @@ public class Application {
     public void start() throws IOException {
         out.println("Welcome");
         menu.displayMenu();
+        String selection = in.readLine();
+        while (!isValidMenuOption(selection)) {
+            out.println("Select a valid option!");
+            selection = in.readLine();
+        }
         processMenuOption();
-
     }
 
     private void processMenuOption() throws IOException {
-        String selection = in.readLine();
+        biblioteca.listBooks();
+    }
+
+    private boolean isValidMenuOption(String selection) {
         if (selection != null && selection.equals("1")) {
-            biblioteca.listBooks();
-        } else if (selection != null) {
-            out.println("Select a valid option!");
+            return true;
         }
+        return false;
     }
 }
