@@ -19,31 +19,19 @@ public class Application {
         this.menu = menu;
     }
 
-    public void start() {
+    public void start() throws IOException {
         out.println("Welcome");
         menu.displayMenu();
-        handleUserInput();
+        processMenuOption();
+
     }
 
-    private void handleUserInput() {
-        boolean invalidInput = !isMenuOption();
-        if (invalidInput){
-            invalidInput = !isMenuOption();
+    private void processMenuOption() throws IOException {
+        String selection = in.readLine();
+        if (selection != null && selection.equals("1")) {
+            biblioteca.listBooks();
+        } else if (selection != null) {
+            out.println("Select a valid option!");
         }
-    }
-
-    private boolean isMenuOption() {
-        try {
-            String selection = in.readLine();
-            if (selection != null && selection.equals("1")) {
-                biblioteca.listBooks();
-            } else if (selection != null) {
-                out.println("Select a valid option!");
-                return false;
-            }
-        } catch (IOException e) {
-
-        }
-        return true;
     }
 }
